@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, Card } from "react-bootstrap";
 
-const MenuItem = ({ menu }) => {
+const MenuItem = ({ menu, onDelete }) => {
   return (
     <Card>
       <Card.Img variant="top" src={menu.photo} />
@@ -21,7 +21,7 @@ const MenuItem = ({ menu }) => {
             </Link>
           </Col>
           <Col md={3}>
-            <Button>Delete</Button>
+            <Button onClick={() => onDelete(menu._id)}>Delete</Button>
           </Col>
         </Row>
       </Card.Body>

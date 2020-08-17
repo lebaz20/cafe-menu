@@ -1,12 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Button } from "react-bootstrap";
+import { Alert, Row, Col, Button } from "react-bootstrap";
 import graphql from "babel-plugin-relay/macro";
-import { QueryRenderer } from "react-relay";
+import { QueryRenderer, commitMutation } from "react-relay";
 import environment from "../Relay/environment";
 import MenuItem from "./MenuItem";
 
 const MenuList = () => {
+  const [message, setMessage] = useState();
+  const [messageType, setMessageType] = useState();
+
+  const onDelete = async (menuId) => {
+    const mutation = graphql`
+      mutation MenuListDeleteMutation($menuId: Int!) {
+        delete_menu_by_pk(menuId: $menuId) {
+          menuId
+        }
+      }
+    `;
+
+    let deleteResponse;
+    try {
+      deleteResponse = await new Promise((resolve, reject) =>
+        commitMutation(environment, {
+          mutation,
+          variables: {
+            menuId,
+          },
+          onCompleted: (response, errors) => {
+            if (errors) {
+              reject(errors);
+            }
+            resolve(response);
+          },
+          onError: (err) => reject(err),
+        })
+      );
+    } catch (e) {
+      console.error(e);
+      setMessage("Failed to delete entry!");
+      setMessageType("danger");
+      return false;
+    }
+
+    setMessage(
+      `Menu item #${deleteResponse.delete_menu_by_pk.menuId} deleted successfully.`
+    );
+    setMessageType("success");
+    setTimeout(() => {
+      window.location.reload();
+    }, 5 * 1000);
+    return true;
+  };
+
   return (
     <>
       <Row>
@@ -19,6 +65,7 @@ const MenuList = () => {
           </Link>
         </Col>
       </Row>
+      {message && <Alert variant={messageType}>{message}</Alert>}
       <QueryRenderer
         environment={environment}
         query={graphql`
@@ -51,7 +98,7 @@ const MenuList = () => {
             <Row key={menus[0]._id}>
               {menus.map((menu) => (
                 <Col md={4} key={menu._id}>
-                  <MenuItem menu={menu} />
+                  <MenuItem menu={menu} onDelete={onDelete} />
                 </Col>
               ))}
             </Row>

@@ -1,0 +1,507 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+# expression to compare columns of type Int. All fields are combined with logical 'AND'.
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+# columns and relationships of "menu"
+type menu {
+  menuId: Int!
+  name: String!
+  photo: String!
+  price: money!
+  type: String!
+}
+
+# aggregated selection of "menu"
+type menu_aggregate {
+  aggregate: menu_aggregate_fields
+  nodes: [menu!]!
+}
+
+# aggregate fields of "menu"
+type menu_aggregate_fields {
+  avg: menu_avg_fields
+  count(columns: [menu_select_column!], distinct: Boolean): Int
+  max: menu_max_fields
+  min: menu_min_fields
+  stddev: menu_stddev_fields
+  stddev_pop: menu_stddev_pop_fields
+  stddev_samp: menu_stddev_samp_fields
+  sum: menu_sum_fields
+  var_pop: menu_var_pop_fields
+  var_samp: menu_var_samp_fields
+  variance: menu_variance_fields
+}
+
+# order by aggregate values of table "menu"
+input menu_aggregate_order_by {
+  avg: menu_avg_order_by
+  count: order_by
+  max: menu_max_order_by
+  min: menu_min_order_by
+  stddev: menu_stddev_order_by
+  stddev_pop: menu_stddev_pop_order_by
+  stddev_samp: menu_stddev_samp_order_by
+  sum: menu_sum_order_by
+  var_pop: menu_var_pop_order_by
+  var_samp: menu_var_samp_order_by
+  variance: menu_variance_order_by
+}
+
+# input type for inserting array relation for remote table "menu"
+input menu_arr_rel_insert_input {
+  data: [menu_insert_input!]!
+  on_conflict: menu_on_conflict
+}
+
+# aggregate avg on columns
+type menu_avg_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by avg() on columns of table "menu"
+input menu_avg_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# Boolean expression to filter rows from the table "menu". All fields are combined with a logical 'AND'.
+input menu_bool_exp {
+  _and: [menu_bool_exp]
+  _not: menu_bool_exp
+  _or: [menu_bool_exp]
+  menuId: Int_comparison_exp
+  name: String_comparison_exp
+  photo: String_comparison_exp
+  price: money_comparison_exp
+  type: String_comparison_exp
+}
+
+# unique or primary key constraints on table "menu"
+enum menu_constraint {
+  # unique or primary key constraint
+  menu_pkey
+}
+
+# input type for incrementing integer column in table "menu"
+input menu_inc_input {
+  menuId: Int
+  price: money
+}
+
+# input type for inserting data into table "menu"
+input menu_insert_input {
+  menuId: Int
+  name: String
+  photo: String
+  price: money
+  type: String
+}
+
+# aggregate max on columns
+type menu_max_fields {
+  menuId: Int
+  name: String
+  photo: String
+  price: money
+  type: String
+}
+
+# order by max() on columns of table "menu"
+input menu_max_order_by {
+  menuId: order_by
+  name: order_by
+  photo: order_by
+  price: order_by
+  type: order_by
+}
+
+# aggregate min on columns
+type menu_min_fields {
+  menuId: Int
+  name: String
+  photo: String
+  price: money
+  type: String
+}
+
+# order by min() on columns of table "menu"
+input menu_min_order_by {
+  menuId: order_by
+  name: order_by
+  photo: order_by
+  price: order_by
+  type: order_by
+}
+
+# response of any mutation on the table "menu"
+type menu_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [menu!]!
+}
+
+# input type for inserting object relation for remote table "menu"
+input menu_obj_rel_insert_input {
+  data: menu_insert_input!
+  on_conflict: menu_on_conflict
+}
+
+# on conflict condition type for table "menu"
+input menu_on_conflict {
+  constraint: menu_constraint!
+  update_columns: [menu_update_column!]!
+  where: menu_bool_exp
+}
+
+# ordering options when selecting data from "menu"
+input menu_order_by {
+  menuId: order_by
+  name: order_by
+  photo: order_by
+  price: order_by
+  type: order_by
+}
+
+# primary key columns input for table: "menu"
+input menu_pk_columns_input {
+  menuId: Int!
+}
+
+# select columns of table "menu"
+enum menu_select_column {
+  # column name
+  menuId
+
+  # column name
+  name
+
+  # column name
+  photo
+
+  # column name
+  price
+
+  # column name
+  type
+}
+
+# input type for updating data in table "menu"
+input menu_set_input {
+  menuId: Int
+  name: String
+  photo: String
+  price: money
+  type: String
+}
+
+# aggregate stddev on columns
+type menu_stddev_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by stddev() on columns of table "menu"
+input menu_stddev_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# aggregate stddev_pop on columns
+type menu_stddev_pop_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by stddev_pop() on columns of table "menu"
+input menu_stddev_pop_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# aggregate stddev_samp on columns
+type menu_stddev_samp_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by stddev_samp() on columns of table "menu"
+input menu_stddev_samp_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# aggregate sum on columns
+type menu_sum_fields {
+  menuId: Int
+  price: money
+}
+
+# order by sum() on columns of table "menu"
+input menu_sum_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# update columns of table "menu"
+enum menu_update_column {
+  # column name
+  menuId
+
+  # column name
+  name
+
+  # column name
+  photo
+
+  # column name
+  price
+
+  # column name
+  type
+}
+
+# aggregate var_pop on columns
+type menu_var_pop_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by var_pop() on columns of table "menu"
+input menu_var_pop_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# aggregate var_samp on columns
+type menu_var_samp_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by var_samp() on columns of table "menu"
+input menu_var_samp_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+# aggregate variance on columns
+type menu_variance_fields {
+  menuId: Float
+  price: Float
+}
+
+# order by variance() on columns of table "menu"
+input menu_variance_order_by {
+  menuId: order_by
+  price: order_by
+}
+
+scalar money
+
+# expression to compare columns of type money. All fields are combined with logical 'AND'.
+input money_comparison_exp {
+  _eq: money
+  _gt: money
+  _gte: money
+  _in: [money!]
+  _is_null: Boolean
+  _lt: money
+  _lte: money
+  _neq: money
+  _nin: [money!]
+}
+
+# mutation root
+type mutation_root {
+  # delete data from the table: "menu"
+  delete_menu(
+    # filter the rows which have to be deleted
+    where: menu_bool_exp!
+  ): menu_mutation_response
+
+  # delete single row from the table: "menu"
+  delete_menu_by_pk(menuId: Int!): menu
+
+  # insert data into the table: "menu"
+  insert_menu(
+    # the rows to be inserted
+    objects: [menu_insert_input!]!
+
+    # on conflict condition
+    on_conflict: menu_on_conflict
+  ): menu_mutation_response
+
+  # insert a single row into the table: "menu"
+  insert_menu_one(
+    # the row to be inserted
+    object: menu_insert_input!
+
+    # on conflict condition
+    on_conflict: menu_on_conflict
+  ): menu
+
+  # update data of the table: "menu"
+  update_menu(
+    # increments the integer columns with given value of the filtered values
+    _inc: menu_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: menu_set_input
+
+    # filter the rows which have to be updated
+    where: menu_bool_exp!
+  ): menu_mutation_response
+
+  # update single row of the table: "menu"
+  update_menu_by_pk(
+    # increments the integer columns with given value of the filtered values
+    _inc: menu_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: menu_set_input
+    pk_columns: menu_pk_columns_input!
+  ): menu
+}
+
+# column ordering options
+enum order_by {
+  # in the ascending order, nulls last
+  asc
+
+  # in the ascending order, nulls first
+  asc_nulls_first
+
+  # in the ascending order, nulls last
+  asc_nulls_last
+
+  # in the descending order, nulls first
+  desc
+
+  # in the descending order, nulls first
+  desc_nulls_first
+
+  # in the descending order, nulls last
+  desc_nulls_last
+}
+
+# query root
+type query_root {
+  # fetch data from the table: "menu"
+  menu(
+    # distinct select on columns
+    distinct_on: [menu_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [menu_order_by!]
+
+    # filter the rows returned
+    where: menu_bool_exp
+  ): [menu!]!
+
+  # fetch aggregated fields from the table: "menu"
+  menu_aggregate(
+    # distinct select on columns
+    distinct_on: [menu_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [menu_order_by!]
+
+    # filter the rows returned
+    where: menu_bool_exp
+  ): menu_aggregate!
+
+  # fetch data from the table: "menu" using primary key columns
+  menu_by_pk(menuId: Int!): menu
+}
+
+# expression to compare columns of type String. All fields are combined with logical 'AND'.
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+# subscription root
+type subscription_root {
+  # fetch data from the table: "menu"
+  menu(
+    # distinct select on columns
+    distinct_on: [menu_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [menu_order_by!]
+
+    # filter the rows returned
+    where: menu_bool_exp
+  ): [menu!]!
+
+  # fetch aggregated fields from the table: "menu"
+  menu_aggregate(
+    # distinct select on columns
+    distinct_on: [menu_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [menu_order_by!]
+
+    # filter the rows returned
+    where: menu_bool_exp
+  ): menu_aggregate!
+
+  # fetch data from the table: "menu" using primary key columns
+  menu_by_pk(menuId: Int!): menu
+}
+

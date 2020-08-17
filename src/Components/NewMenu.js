@@ -82,7 +82,7 @@ const NewMenu = () => {
     }
 
     setMessage(
-      `Menu item #${insertResponse.insert_menu_one.menuId} saved successfully`
+      `Menu item #${insertResponse.insert_menu_one.menuId} saved successfully.`
     );
     setMessageType("success");
     return true;
@@ -100,6 +100,7 @@ const NewMenu = () => {
           </Link>
         </Col>
       </Row>
+      {message && <Alert variant={messageType}>{message}</Alert>}
       <Form encType="multipart/form-data" onSubmit={onSubmit}>
         <Form.Group as={Row} controlId="type">
           <Form.Label column sm={2}>
@@ -168,8 +169,6 @@ const NewMenu = () => {
             <Button type="submit">Save Item</Button>
           </Col>
         </Form.Group>
-
-        {message && <Alert variant={messageType}>{message}</Alert>}
       </Form>
     </>
   );
