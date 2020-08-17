@@ -1,18 +1,24 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import axios from "axios";
 
-function fetchQuery(operation, variables) {
-  return fetch("http://localhost:8080/v1/graphql", {
+async function fetchQuery(operation, variables) {
+  const CI = process.env.REACT_APP_CI;
+
+  const response = await axios({
+    url: `${
+      CI === "1" ? "http://backend:8080" : "http://localhost:8080"
+    }/v1/graphql`,
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
+    data: {
       query: operation.text,
       variables,
-    }),
-  }).then((response) => {
-    return response.json();
+    },
+    responseType: "json",
   });
+  return response.data;
 }
 
 const environment = new Environment({
