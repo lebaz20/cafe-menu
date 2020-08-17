@@ -504,4 +504,3 @@ type subscription_root {
   # fetch data from the table: "menu" using primary key columns
   menu_by_pk(id: Int!): menu
 }
-

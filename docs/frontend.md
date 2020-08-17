@@ -43,6 +43,10 @@ Checks linting errors.
 
 Tries to fix some or all of linting errors.
 
+### `yarn prettier-fix`
+
+Format code using prettier rules.
+
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

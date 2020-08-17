@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 services:
   database:
     image: postgres:12
@@ -43,4 +43,3 @@ services:
       - ./cypress.json:/cypress.json
 volumes:
   db_data:
-
