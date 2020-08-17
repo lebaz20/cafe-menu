@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Alert, Row, Col, Button } from "react-bootstrap";
 import graphql from "babel-plugin-relay/macro";
 import { QueryRenderer, commitMutation } from "react-relay";
-import environment from "../Relay/environment";
+import environment from "../Services/Relay/environment";
 import MenuItem from "./MenuItem";
 
 const MenuList = () => {

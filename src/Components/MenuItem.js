@@ -10,7 +10,7 @@ const MenuItem = ({ menu, onDelete }) => {
         <Card.Title>
           <Row>
             <Col>{menu.name}</Col>
-            <Col md={{ span: 4, offset: 3 }}>{menu.price}</Col>
+            <Col md={{ span: 4, offset: 2 }}>{menu.price}</Col>
           </Row>
         </Card.Title>
         <Card.Text>{menu.type}</Card.Text>
