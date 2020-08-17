@@ -4,6 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `yarn generate-schema`
+
+Generates schema to be used by command below to generate queries artifacts.
+
+### `yarn relay`
+
+Generates compiled queries artifacts.
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
@@ -26,6 +34,14 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn lint`
+
+Checks linting errors.
+
+### `yarn lint-fix`
+
+Tries to fix some or all of linting errors.
 
 ### `yarn eject`
 
