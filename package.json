@@ -46,6 +46,10 @@
     "extends": "react-app",
     "env": {
       "browser": true
+    },
+    "globals": {
+      "cy": false,
+      "Cypress": false
     }
   },
   "browserslist": {
