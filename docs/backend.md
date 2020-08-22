@@ -20,6 +20,8 @@ Applies metadata to server.
 
 Applies migrations to postgres database.
 
+## Database schema
+
 ### Menu table structure
 
 ```
