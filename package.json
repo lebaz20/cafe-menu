@@ -31,9 +31,9 @@
     "prettier-fix": "prettier --write \"./**/*.{js,jsx,json,css,scss,md}\"",
     "relay": "relay-compiler --src ./src --schema ./gq_data/schema.graphql",
     "generate-schema": "gq http://localhost:8080/v1/graphql --introspect > gq_data/schema.graphql",
-    "export-metadata": "hasura metadata export --project ./hasura",
-    "apply-metadata": "hasura metadata apply --project ./hasura",
-    "apply-migrations": "hasura migrate apply --project ./hasura"
+    "export-metadata": "hasura metadata export --skip-update-check --project ./hasura",
+    "apply-metadata": "hasura metadata apply --skip-update-check --project ./hasura",
+    "apply-migrations": "hasura migrate apply --skip-update-check --project ./hasura"
   },
   "husky": {
     "hooks": {
